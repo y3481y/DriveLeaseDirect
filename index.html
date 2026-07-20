@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DriveLeaseDirect — Slim Leasen. Direct Rijden.</title>
-<meta name="description" content="Private en zakelijke autolease. Gegarandeerd scherpe prijzen, direct rijden, transparant en persoonlijk.">
+<meta name="description" content="Zakelijke autolease zonder kilometerbeperking. Gegarandeerd scherpe prijzen, direct rijden, transparant en persoonlijk.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -186,24 +186,45 @@ h1, h2, h3{
 /* ---------- Brand strip ---------- */
 .brand-strip{
   background: var(--color-white);
-  padding: 30px 0;
+  padding: 0;
   border-bottom: 1px solid var(--color-line);
+  overflow: hidden;
 }
-.brand-strip .wrap{
+.brand-marquee{
+  display: flex;
+  width: max-content;
+  animation: brand-scroll 55s linear infinite;
+}
+.brand-marquee:hover{ animation-play-state: paused; }
+.brand-group{
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
+  gap: 20px;
+  padding: 30px 20px;
+}
+.brand-chip{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-offwhite);
+  white-space: nowrap;
 }
 .brand-word{
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 19px;
+  font-size: 17px;
   color: var(--color-ink-soft);
   letter-spacing: 0.02em;
-  opacity: 0.72;
-  white-space: nowrap;
+}
+@keyframes brand-scroll{
+  from{ transform: translateX(-50%); }
+  to{ transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce){
+  .brand-marquee{ animation: none; }
 }
 
 /* ---------- Why-us (navy bar + white grid) ---------- */
@@ -365,6 +386,23 @@ input[type="range"]::-moz-range-thumb{
 .calc-readout .btn{ margin-top: 24px; }
 
 /* ---------- Reviews ---------- */
+/* ---------- Reviews ---------- */
+.rating-badge{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  padding: 12px 22px;
+}
+.rating-stars{ color: var(--color-gold); font-size: 20px; letter-spacing: 2px; }
+.rating-badge span{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  max-width: 16ch;
+}
 .reviews{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .review{
   background: var(--color-white);
@@ -373,7 +411,7 @@ input[type="range"]::-moz-range-thumb{
   padding: 26px;
 }
 .review p{ font-size: 15px; margin: 0 0 16px; }
-.review .who{ font-family: var(--font-mono); font-size: 13px; color: var(--color-ink-soft); }
+.review .who{ font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--color-ink-soft); }
 .stars{ color: var(--color-gold); letter-spacing: 2px; margin-bottom: 10px; }
 
 /* ---------- Contact ---------- */
@@ -392,16 +430,57 @@ input[type="range"]::-moz-range-thumb{
 .form-grid{ display: grid; gap: 16px; }
 .form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 label.field-label{
-  display: block; font-size: 13px; font-family: var(--font-mono);
-  color: var(--color-paper-soft); margin-bottom: 6px;
+  display: block;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-paper-soft);
+  margin-bottom: 6px;
 }
 input[type="text"], input[type="email"], input[type="tel"], select, textarea{
   width: 100%; background: var(--color-navy-soft); border: 1px solid var(--color-line-navy);
   border-radius: 8px; padding: 12px 14px; color: var(--color-white);
   font-family: var(--font-body); font-size: 15px;
 }
+select{
+  appearance: none;
+  -webkit-appearance: none;
+  color-scheme: dark;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23A9B3C7' stroke-width='2'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+select option{
+  background: var(--color-navy-soft);
+  color: var(--color-white);
+}
 textarea{ resize: vertical; min-height: 90px; }
 .contact-panel .btn-gold{ width: 100%; }
+
+/* ---------- Floating WhatsApp button ---------- */
+.whatsapp-float{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px -8px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease;
+}
+.whatsapp-float:hover{ transform: scale(1.08); }
+.whatsapp-float svg{ width: 30px; height: 30px; }
+@media (max-width: 640px){
+  .whatsapp-float{ right: 16px; bottom: 16px; width: 54px; height: 54px; }
+}
 
 /* ---------- Footer ---------- */
 footer{ padding: 40px 0; background: var(--color-navy); color: var(--color-paper-soft); }
@@ -458,7 +537,7 @@ footer a{ text-decoration: none; }
     <nav>
       <ul class="nav-links">
         <li><a href="#top">Home</a></li>
-        <li><a href="#aanbod">Auto's</a></li>
+        <li><a href="#aanbod">Diensten</a></li>
         <li><a href="#hoe-het-werkt">Over ons</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -481,20 +560,51 @@ footer a{ text-decoration: none; }
         <h1>Lease direct de auto die bij je past</h1>
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-gold">Gratis Offerte</a>
-          <a href="#aanbod" class="btn btn-outline-light">Bekijk het aanbod</a>
+          <a href="#aanbod" class="btn btn-outline-light">Onze werkwijze</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- BRAND STRIP -->
-  <section class="brand-strip" style="padding:30px 0;">
-    <div class="wrap">
-      <span class="brand-word">BMW</span>
-      <span class="brand-word">Mercedes-Benz</span>
-      <span class="brand-word">Audi</span>
-      <span class="brand-word">Volvo</span>
-      <span class="brand-word">Volkswagen</span>
+  <section class="brand-strip">
+    <div class="brand-marquee">
+      <div class="brand-group">
+        <span class="brand-chip"><span class="brand-word">BMW</span></span>
+        <span class="brand-chip"><span class="brand-word">Mercedes-Benz</span></span>
+        <span class="brand-chip"><span class="brand-word">Audi</span></span>
+        <span class="brand-chip"><span class="brand-word">Volvo</span></span>
+        <span class="brand-chip"><span class="brand-word">Volkswagen</span></span>
+        <span class="brand-chip"><span class="brand-word">Škoda</span></span>
+        <span class="brand-chip"><span class="brand-word">Peugeot</span></span>
+        <span class="brand-chip"><span class="brand-word">Renault</span></span>
+        <span class="brand-chip"><span class="brand-word">Opel</span></span>
+        <span class="brand-chip"><span class="brand-word">Ford</span></span>
+        <span class="brand-chip"><span class="brand-word">Kia</span></span>
+        <span class="brand-chip"><span class="brand-word">Hyundai</span></span>
+        <span class="brand-chip"><span class="brand-word">Toyota</span></span>
+        <span class="brand-chip"><span class="brand-word">Cupra</span></span>
+        <span class="brand-chip"><span class="brand-word">SEAT</span></span>
+        <span class="brand-chip"><span class="brand-word">Citroën</span></span>
+      </div>
+      <div class="brand-group" aria-hidden="true">
+        <span class="brand-chip"><span class="brand-word">BMW</span></span>
+        <span class="brand-chip"><span class="brand-word">Mercedes-Benz</span></span>
+        <span class="brand-chip"><span class="brand-word">Audi</span></span>
+        <span class="brand-chip"><span class="brand-word">Volvo</span></span>
+        <span class="brand-chip"><span class="brand-word">Volkswagen</span></span>
+        <span class="brand-chip"><span class="brand-word">Škoda</span></span>
+        <span class="brand-chip"><span class="brand-word">Peugeot</span></span>
+        <span class="brand-chip"><span class="brand-word">Renault</span></span>
+        <span class="brand-chip"><span class="brand-word">Opel</span></span>
+        <span class="brand-chip"><span class="brand-word">Ford</span></span>
+        <span class="brand-chip"><span class="brand-word">Kia</span></span>
+        <span class="brand-chip"><span class="brand-word">Hyundai</span></span>
+        <span class="brand-chip"><span class="brand-word">Toyota</span></span>
+        <span class="brand-chip"><span class="brand-word">Cupra</span></span>
+        <span class="brand-chip"><span class="brand-word">SEAT</span></span>
+        <span class="brand-chip"><span class="brand-word">Citroën</span></span>
+      </div>
     </div>
   </section>
 
@@ -510,8 +620,8 @@ footer a{ text-decoration: none; }
             <div class="why-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
-            <strong>Gegarandeerd de goedkoopste</strong>
-            <span>Altijd de scherpste leaseprijs, zonder in te leveren op service.</span>
+            <strong>Scherpe, eerlijke prijzen</strong>
+            <span>Een offerte die past bij jouw budget, zonder verborgen opslagen.</span>
           </div>
           <div class="why-item reveal">
             <div class="why-icon">
@@ -539,70 +649,54 @@ footer a{ text-decoration: none; }
     </div>
   </section>
 
-  <!-- AANBOD -->
+  <!-- DIENSTEN (informatief, geen eigen voorraad) -->
   <section id="aanbod">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <span class="eyebrow">Actueel aanbod</span>
-          <h2>Direct leverbare auto's</h2>
+          <span class="eyebrow">Onze werkwijze</span>
+          <h2>Zakelijke lease, op maat samengesteld</h2>
         </div>
-        <p>Een greep uit de auto's die op dit moment direct leverbaar zijn.</p>
+        <p>Geen vaste voorraad — wij zoeken en regelen de auto die bij jouw bedrijf past.</p>
       </div>
-      <div class="car-grid">
-
-        <div class="car-card reveal">
-          <div class="car-photo">
-            <!-- images/auto-1.jpg -->
-            <img src="images/auto-1.jpg" alt="Compacte hatchback, private lease" loading="lazy">
+      <div class="steps">
+        <div class="step reveal">
+          <div class="why-icon" style="margin:0 0 18px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="15" height="11" rx="2"/><path d="M18 10h2.5a1 1 0 011 1v3.5a1 1 0 01-1 1H18"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="15.5" cy="18.5" r="1.5"/></svg>
           </div>
-          <div class="car-body">
-            <h3>Compacte hatchback</h3>
-            <div class="car-specs"><span>Benzine</span><span>·</span><span>10.000 km/jr</span><span>·</span><span>60 mnd</span></div>
-            <div class="car-price">€ 289 <span>/ maand</span></div>
-            <a href="#contact" class="btn btn-outline" style="width:100%;">Offerte aanvragen</a>
-          </div>
+          <h3>Alle merken en modellen</h3>
+          <p>Van compacte bedrijfsauto tot volledig elektrisch — wij bemiddelen in het volledige aanbod, niet alleen wat er toevallig op de stoep staat.</p>
         </div>
-
-        <div class="car-card reveal">
-          <div class="car-photo">
-            <!-- images/auto-2.jpg -->
-            <img src="images/auto-2.jpg" alt="Gezinsauto, private lease" loading="lazy">
+        <div class="step reveal">
+          <div class="why-icon" style="margin:0 0 18px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
           </div>
-          <div class="car-body">
-            <h3>Gezins-SUV</h3>
-            <div class="car-specs"><span>Hybride</span><span>·</span><span>15.000 km/jr</span><span>·</span><span>48 mnd</span></div>
-            <div class="car-price">€ 419 <span>/ maand</span></div>
-            <a href="#contact" class="btn btn-outline" style="width:100%;">Offerte aanvragen</a>
-          </div>
+          <h3>Geen kilometerbeperking</h3>
+          <p>Onze zakelijke leasecontracten kennen geen vast kilometermaximum, zodat je niet wordt beperkt in hoe je de auto zakelijk inzet.</p>
         </div>
-
-        <div class="car-card reveal">
-          <div class="car-photo">
-            <!-- images/auto-3.jpg -->
-            <img src="images/auto-3.jpg" alt="Volledig elektrische auto, zakelijke lease" loading="lazy">
+        <div class="step reveal">
+          <div class="why-icon" style="margin:0 0 18px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           </div>
-          <div class="car-body">
-            <h3>Elektrische middenklasser</h3>
-            <div class="car-specs"><span>Elektrisch</span><span>·</span><span>20.000 km/jr</span><span>·</span><span>36 mnd</span></div>
-            <div class="car-price">€ 469 <span>/ maand</span></div>
-            <a href="#contact" class="btn btn-outline" style="width:100%;">Offerte aanvragen</a>
-          </div>
+          <h3>Op maat voor jouw wagenpark</h3>
+          <p>Eén auto of een hele vloot — we stellen een offerte samen op basis van jouw bedrijfssituatie, niet op basis van een standaardpakket.</p>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- HOE HET WERKT -->
-  <section id="hoe-het-werkt" style="background:var(--color-offwhite);">
+  <section id="hoe-het-werkt" style="background:var(--color-offwhite); padding-bottom:48px;">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
           <span class="eyebrow">Over ons</span>
           <h2>Hoe het werkt</h2>
         </div>
-        <p>Van eerste keuze tot rijklare auto op je oprit, in drie stappen.</p>
+        <div class="rating-badge">
+          <div class="rating-stars" style="font-size:22px; color:var(--color-navy);">3</div>
+          <span>Eenvoudige stappen naar je auto</span>
+        </div>
       </div>
       <div class="steps">
         <div class="step reveal">
@@ -613,7 +707,7 @@ footer a{ text-decoration: none; }
         <div class="step reveal">
           <span class="step-num">02</span>
           <h3>Vraag je offerte aan</h3>
-          <p>Stel looptijd en kilometers samen met een adviseur af op jouw situatie.</p>
+          <p>Stel de looptijd samen met een adviseur af op jouw bedrijfssituatie.</p>
         </div>
         <div class="step reveal">
           <span class="step-num">03</span>
@@ -624,52 +718,24 @@ footer a{ text-decoration: none; }
     </div>
   </section>
 
-  <!-- CALCULATOR -->
-  <section id="rekentool">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Rekentool</span>
-          <h2>Bereken je lease</h2>
-        </div>
-        <p>Schuif met looptijd en kilometers en zie direct een indicatie van je maandprijs.</p>
-      </div>
-      <div class="calculator reveal">
-        <div class="calc-controls">
-          <div class="control">
-            <label for="looptijd">Looptijd <span class="val" id="looptijdVal">48 mnd</span></label>
-            <input type="range" id="looptijd" min="12" max="60" step="12" value="48">
-          </div>
-          <div class="control">
-            <label for="kmPerJaar">Kilometers per jaar <span class="val" id="kmVal">15.000 km</span></label>
-            <input type="range" id="kmPerJaar" min="10000" max="30000" step="2500" value="15000">
-          </div>
-        </div>
-        <div class="calc-readout">
-          <div class="label">Indicatie maandprijs</div>
-          <div class="odometer" id="odometer"></div>
-          <div class="per-month">euro per maand · richtprijs excl. brandstof</div>
-          <a href="#contact" class="btn btn-gold">Vraag deze deal aan</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- REVIEWS -->
-  <section id="reviews" style="background:var(--color-offwhite);">
+  <section id="reviews" style="background:var(--color-offwhite); padding-top:48px;">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head reveal" style="margin-bottom:26px;">
         <div>
           <span class="eyebrow">Reviews</span>
           <h2>Wat klanten zeggen</h2>
         </div>
-        <p>Ervaringen van mensen die net als jij op zoek waren naar een auto zonder gedoe.</p>
+        <div class="rating-badge">
+          <div class="rating-stars">★★★★★</div>
+          <span>Zo ervaren klanten onze service</span>
+        </div>
       </div>
       <div class="reviews">
         <div class="review reveal">
           <div class="stars">★★★★★</div>
           <p>"Binnen twee weken stond de auto voor de deur. Geen kleine lettertjes, precies zoals besproken."</p>
-          <div class="who">— Private lease klant</div>
+          <div class="who">— Zakelijke klant</div>
         </div>
         <div class="review reveal">
           <div class="stars">★★★★★</div>
@@ -679,7 +745,7 @@ footer a{ text-decoration: none; }
         <div class="review reveal">
           <div class="stars">★★★★★</div>
           <p>"De rekentool gaf precies aan waar ik aan toe was voordat ik ook maar contact opnam."</p>
-          <div class="who">— Private lease klant</div>
+          <div class="who">— Zakelijke klant</div>
         </div>
       </div>
     </div>
@@ -694,7 +760,12 @@ footer a{ text-decoration: none; }
           <h2>Vraag je gratis offerte aan</h2>
           <p>Vul je gegevens in en een adviseur neemt binnen één werkdag contact met je op.</p>
         </div>
-        <form class="form-grid" id="contactForm">
+        <form class="form-grid" id="contactForm" action="https://formsubmit.co/younesmoussa991@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nieuwe leaseaanvraag via de website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://driveleasedirect.nl/#contact">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div>
               <label class="field-label" for="naam">Naam</label>
@@ -712,8 +783,8 @@ footer a{ text-decoration: none; }
           <div>
             <label class="field-label" for="interesse">Ik ben geïnteresseerd in</label>
             <select id="interesse" name="interesse">
-              <option>Private lease</option>
-              <option>Zakelijke lease</option>
+              <option>Eén bedrijfsauto</option>
+              <option>Meerdere auto's / wagenpark</option>
               <option>Nog niet zeker</option>
             </select>
           </div>
@@ -729,58 +800,25 @@ footer a{ text-decoration: none; }
 
 </main>
 
+<a href="https://wa.me/31657866627?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20zakelijke%20lease" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.5 6.5a8 8 0 00-13.2 8.9L3 21l5.8-1.2A8 8 0 1017.5 6.5z" fill="white"/>
+    <path d="M9.2 8.3c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.4.2.5.7 1.7.7 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.6-.7c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.3.1.2.1 1-.3 1.9-.4.9-2 1.7-2.7 1.7-.7.1-1.5.1-4.9-2-2.7-1.7-4.5-4.6-4.6-4.8-.1-.2-1-1.3-1-2.5 0-1.2.6-1.8.9-2.1z" fill="#25D366"/>
+  </svg>
+</a>
+
 <footer>
   <div class="wrap">
     <span>© <span id="jaar"></span> DriveLeaseDirect. Alle rechten voorbehouden.</span>
-    <span>KVK 00000000</span>
+    <span>KVK 97974617</span>
   </div>
 </footer>
-1
-   
+
 <script>document.getElementById('jaar').textContent = new Date().getFullYear();</script>
 <script>
 // ---------- Lease calculator ----------
 // Simple illustrative pricing model — pas de basisprijs en factoren
 // hieronder aan naar jouw eigen tarieven.
-(function () {
-  const looptijdInput = document.getElementById('looptijd');
-  const kmInput = document.getElementById('kmPerJaar');
-  const looptijdVal = document.getElementById('looptijdVal');
-  const kmVal = document.getElementById('kmVal');
-  const odometer = document.getElementById('odometer');
-
-  if (!looptijdInput || !kmInput || !odometer) return;
-
-  const BASISPRIJS = 349; // richtprijs bij 60 mnd / 10.000 km
-  const MAX_TOESLAG = 180; // extra bij kortste looptijd + meeste km
-
-  function berekenPrijs(looptijd, km) {
-    const looptijdFactor = (60 - looptijd) / 48; // 0 bij 60 mnd, 1 bij 12 mnd
-    const kmFactor = (km - 10000) / 20000; // 0 bij 10.000, 1 bij 30.000
-    const opslag = (looptijdFactor * 0.6 + kmFactor * 0.4) * MAX_TOESLAG;
-    return Math.round(BASISPRIJS + opslag);
-  }
-
-  function renderOdometer(value) {
-    const digits = String(value).padStart(3, '0').split('');
-    odometer.innerHTML = digits
-      .map((d) => `<span class="digit">${d}</span>`)
-      .join('');
-  }
-
-  function update() {
-    const looptijd = Number(looptijdInput.value);
-    const km = Number(kmInput.value);
-    looptijdVal.textContent = looptijd + ' mnd';
-    kmVal.textContent = km.toLocaleString('nl-NL') + ' km';
-    renderOdometer(berekenPrijs(looptijd, km));
-  }
-
-  looptijdInput.addEventListener('input', update);
-  kmInput.addEventListener('input', update);
-  update();
-})();
-
 // ---------- Scroll reveal ----------
 (function () {
   const items = document.querySelectorAll('.reveal');
@@ -801,18 +839,10 @@ footer a{ text-decoration: none; }
   items.forEach((item) => observer.observe(item));
 })();
 
-// ---------- Contact form (front-end only) ----------
-(function () {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    alert(
-      'Bedankt voor je aanvraag! Dit formulier is nog niet gekoppeld aan een verzendservice — zie de README voor hoe je dit instelt (bv. via Formspree).'
-    );
-    form.reset();
-  });
-})();
+// ---------- Contact form ----------
+// Verstuurd nu echt naar je e-mail via formsubmit.co — geen extra
+// JavaScript hier nodig, het formulier doet het zelf via het
+// action-attribuut in index.html.
 
 </script>
 </body>
