@@ -199,19 +199,25 @@ h1, h2, h3{
 .brand-group{
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 30px 20px;
+  gap: 56px;
+  padding: 28px 28px;
 }
 .brand-chip{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 28px;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-pill);
-  background: var(--color-offwhite);
-  white-space: nowrap;
+  height: 42px;
 }
+.brand-chip img{
+  height: 100%;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.brand-chip img:hover{ filter: grayscale(0); opacity: 1; }
 .brand-word{
   font-family: var(--font-display);
   font-weight: 700;
@@ -523,7 +529,7 @@ footer a{ text-decoration: none; }
 <header class="site-header">
   <div class="wrap">
     <a href="#top" class="logo-block">
-      <img src="image/logo.png" alt="DriveLeaseDirect logo" style="height:48px; width:auto;">
+      <img src="image/logo.png" alt="DriveLeaseDirect logo" style="height:72px; width:auto;">
     </a>
     <nav>
       <ul class="nav-links">
@@ -561,40 +567,40 @@ footer a{ text-decoration: none; }
   <section class="brand-strip">
     <div class="brand-marquee">
       <div class="brand-group">
-        <span class="brand-chip"><span class="brand-word">BMW</span></span>
-        <span class="brand-chip"><span class="brand-word">Mercedes-Benz</span></span>
-        <span class="brand-chip"><span class="brand-word">Audi</span></span>
-        <span class="brand-chip"><span class="brand-word">Volvo</span></span>
-        <span class="brand-chip"><span class="brand-word">Volkswagen</span></span>
-        <span class="brand-chip"><span class="brand-word">Škoda</span></span>
-        <span class="brand-chip"><span class="brand-word">Peugeot</span></span>
-        <span class="brand-chip"><span class="brand-word">Renault</span></span>
-        <span class="brand-chip"><span class="brand-word">Opel</span></span>
-        <span class="brand-chip"><span class="brand-word">Ford</span></span>
-        <span class="brand-chip"><span class="brand-word">Kia</span></span>
-        <span class="brand-chip"><span class="brand-word">Hyundai</span></span>
-        <span class="brand-chip"><span class="brand-word">Toyota</span></span>
-        <span class="brand-chip"><span class="brand-word">Cupra</span></span>
-        <span class="brand-chip"><span class="brand-word">SEAT</span></span>
-        <span class="brand-chip"><span class="brand-word">Citroën</span></span>
+        <span class="brand-chip"><img src="image/brands/bmw.png" alt="BMW logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/mercedes-benz.png" alt="Mercedes-Benz logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/audi.png" alt="Audi logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/volvo.png" alt="Volvo logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/volkswagen.png" alt="Volkswagen logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/skoda.png" alt="Skoda logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/peugeot.png" alt="Peugeot logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/renault.png" alt="Renault logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/opel.png" alt="Opel logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/ford.png" alt="Ford logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/kia.png" alt="Kia logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/hyundai.png" alt="Hyundai logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/toyota.png" alt="Toyota logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/cupra.png" alt="Cupra logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/seat.png" alt="Seat logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/citroen.png" alt="Citroen logo" loading="lazy"></span>
       </div>
       <div class="brand-group" aria-hidden="true">
-        <span class="brand-chip"><span class="brand-word">BMW</span></span>
-        <span class="brand-chip"><span class="brand-word">Mercedes-Benz</span></span>
-        <span class="brand-chip"><span class="brand-word">Audi</span></span>
-        <span class="brand-chip"><span class="brand-word">Volvo</span></span>
-        <span class="brand-chip"><span class="brand-word">Volkswagen</span></span>
-        <span class="brand-chip"><span class="brand-word">Škoda</span></span>
-        <span class="brand-chip"><span class="brand-word">Peugeot</span></span>
-        <span class="brand-chip"><span class="brand-word">Renault</span></span>
-        <span class="brand-chip"><span class="brand-word">Opel</span></span>
-        <span class="brand-chip"><span class="brand-word">Ford</span></span>
-        <span class="brand-chip"><span class="brand-word">Kia</span></span>
-        <span class="brand-chip"><span class="brand-word">Hyundai</span></span>
-        <span class="brand-chip"><span class="brand-word">Toyota</span></span>
-        <span class="brand-chip"><span class="brand-word">Cupra</span></span>
-        <span class="brand-chip"><span class="brand-word">SEAT</span></span>
-        <span class="brand-chip"><span class="brand-word">Citroën</span></span>
+        <span class="brand-chip"><img src="image/brands/bmw.png" alt="BMW logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/mercedes-benz.png" alt="Mercedes-Benz logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/audi.png" alt="Audi logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/volvo.png" alt="Volvo logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/volkswagen.png" alt="Volkswagen logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/skoda.png" alt="Skoda logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/peugeot.png" alt="Peugeot logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/renault.png" alt="Renault logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/opel.png" alt="Opel logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/ford.png" alt="Ford logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/kia.png" alt="Kia logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/hyundai.png" alt="Hyundai logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/toyota.png" alt="Toyota logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/cupra.png" alt="Cupra logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/seat.png" alt="Seat logo" loading="lazy"></span>
+        <span class="brand-chip"><img src="image/brands/citroen.png" alt="Citroen logo" loading="lazy"></span>
       </div>
     </div>
   </section>
